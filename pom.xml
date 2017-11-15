@@ -3,13 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
  
-    <groupId>com.jdriven.ng2boot</groupId>
-    <artifactId>parent</artifactId>
+    <groupId>fmi.echipa14</groupId>
+    <artifactId>PsErasmusIp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
  
     <name>parent</name>
-    <description>The ng2boot parent project</description>
+    <description>Proiect Ingineria Programarii </description>
  
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -25,7 +25,24 @@
     </properties>
  
     <modules>
-        <module>frontend</module>
-        <module>backend</module>
+        <!--<module>frontend</module>-->
+        <!--<module>backend</module>-->
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
