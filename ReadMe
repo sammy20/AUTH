@@ -1,9 +1,14 @@
-Generale
+    Generale
 
-FrontEnd
+    FrontEnd
 
-BackEnd
-Spring Boot REST + JPA + Hibernate + MySQL Example
-https://www.concretepage.com/spring-boot/spring-boot-rest-jpa-hibernate-mysql-example
+    BackEnd
+        Spring Boot REST + JPA + Hibernate + MySQL Example
+        https://www.concretepage.com/spring-boot/spring-boot-rest-jpa-hibernate-mysql-example
 
 
+Conexiune baza de date
+    Host: 89.42.220.193
+    Nume baza de date: r44923co_Erasmus
+    User: r44923co_Admin
+    Parola: 6%SXmF&M2pAm
