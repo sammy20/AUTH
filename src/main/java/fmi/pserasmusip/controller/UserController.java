@@ -36,7 +36,7 @@ public class UserController {
     public ResponseEntity<Void> addUser(@RequestBody User user, UriComponentsBuilder builder) {
         userService.addUser(user);
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/user/{id}").buildAndExpand(user.getId()).toUri());
+        headers.setLocation(builder.path("/{id}").buildAndExpand(user.getId()).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
     @PutMapping("")
