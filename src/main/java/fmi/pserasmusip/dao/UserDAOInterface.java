@@ -9,4 +9,6 @@ public interface UserDAOInterface {
     void addUser(User user);
     void updateUser(User user);
     void deleteUser(int userId);
+    boolean userExists(String username);
+    User credentialsValid(String username, String password);
 }

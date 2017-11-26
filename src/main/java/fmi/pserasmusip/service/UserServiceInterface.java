@@ -6,7 +6,8 @@ import fmi.pserasmusip.entity.User;
 public interface UserServiceInterface {
     User getUserById(int id);
     List<User> getAllUsers();
-    void addUser(User user);
+    boolean addUser(User user);
     void updateUser(User user);
     void deleteUser(int id);
+    User userLogin(String username, String password);
 }
