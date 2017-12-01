@@ -8,17 +8,12 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import fmi.pserasmusip.entity.User;
 import fmi.pserasmusip.service.UserServiceInterface;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @Controller
 @RequestMapping("/api/users")
 public class UserController {
@@ -49,13 +44,11 @@ public class UserController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Void> addUser(@RequestBody User user, UriComponentsBuilder builder) {
+    public ResponseEntity<Boolean> addUser(@RequestBody User user, UriComponentsBuilder builder) {
         if(!userService.addUser(user)){
-            return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+            return new ResponseEntity<Boolean>(false,HttpStatus.CONFLICT);
         }
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/{id}").buildAndExpand(user.getId()).toUri());
-        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
 
     @PutMapping("")

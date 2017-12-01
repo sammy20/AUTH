@@ -1,0 +1,14 @@
+<div *ngIf="abstractControl.invalid && abstractControl.touched" class="alert alert-danger">
+  <div *ngIf="abstractControl.errors.required">
+    <span>Required</span>
+  </div>
+  <div *ngIf="abstractControl.errors.minlength">
+    <span>Minimum 5 characters</span>
+  </div>
+  <div *ngIf="abstractControl.errors.maxlength">
+    <span>Maximum 30 characters</span>
+  </div>
+  <div *ngIf="abstractControl.errors.email">
+    <span>Please enter a valid email</span>
+  </div>
+</div>

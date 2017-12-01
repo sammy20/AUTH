@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule }     from './app-routing.module';
 
@@ -11,6 +12,9 @@ import { LoginComponent } from '../components/login/login.component';
 import { RegisterComponent } from '../components/register/register.component';
 import { HomeComponent } from '../components/home/home.component';
 import { FavoritesComponent } from '../components/favorites/favorites.component';
+import { ValidationErrorsComponent } from '../components/validation-errors/validation-errors.component';
+
+import { SessionService } from '../services/session.service';
 
 
 
@@ -21,15 +25,19 @@ import { FavoritesComponent } from '../components/favorites/favorites.component'
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    ValidationErrorsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    SessionService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -48,7 +48,7 @@ public class UserDAO implements UserDAOInterface {
 
     @Override
     public boolean userExists(String username){
-        String hql = "FROM User as usr WHERE BINARY usr.username = ?";
+        String hql = "FROM User as usr WHERE usr.username LIKE CAST(? as binary)";
         int count =  entityManager.createQuery(hql)
                 .setParameter(1,username)
                 .getResultList()
