@@ -5,10 +5,9 @@ import { Router } from '@angular/router';
 
 import { SessionService } from '../../services/session.service';
 
-import { User } from '../../model/user';
+import { User } from '../../models/user';
 
 @Component({
-  selector: 'login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -53,13 +52,19 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get("password");
   }
 
-  loginUser(): void{
+  login(): void{
     if(this.loginForm.valid){
-      this.httpClient.post<User>("http://localhost:8080/api/users/login", this.loginForm.value).
+      this.httpClient.post<any>("http://localhost:8080/api/users/login", this.loginForm.value).
       subscribe(
         data => {
-          this.sessionService.login(data as User);
-          // a redirect to /home now
+          let user = new User();
+          user.setId(data.id);
+          user.setUsername(data.username);
+          user.setPassword(data.password);
+          user.setRole(data.role);
+          user.setEmail(data.email);
+          this.sessionService.login(user);
+          this.router.navigate(["/home"]);
         },
         (err: HttpErrorResponse) => {
           if(err.error instanceof Error){
@@ -77,9 +82,23 @@ export class LoginComponent implements OnInit {
   }
 
   loginGuest(): void{
+    let guest = new User();
+    guest.setUsername("Guest");
+    guest.setRole("guest");
+    this.sessionService.login(guest);
     this.router.navigate(["/home"]);
   }
 
+  logout(): void{
+    this.sessionService.logout();
+  }
 
+  getUsername(): string{
+    return this.sessionService.loggedUser().getUsername();
+  }
+
+  isUser(): boolean{
+    return this.sessionService.isUser();
+  }
 
 }

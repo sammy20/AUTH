@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from '../model/user'
+import { User } from '../models/user'
 
 @Injectable()
 export class SessionService {
@@ -8,12 +8,10 @@ export class SessionService {
 
   login(user: User): void{
     this.user = user;
-    // redirect to home, dont let him acces login or registration if logged in
   }
 
   logout(){
     this.user = null;
-    // redirect login, dont let him acces /home if not logged in
   }
 
   loggedUser(): User{
@@ -21,21 +19,23 @@ export class SessionService {
   }
 
   isLogged(): boolean{
-    return (this.user !== null);
+    return this.user !== null;
+  }
+
+  isUser(): boolean{
+    return this.isLogged() && (this.isStudent() || this.isOrganization());
+  }
+
+  isGuest(): boolean{
+    return this.isLogged() && (this.user.getRole() == "guest");
   }
 
   isStudent(): boolean{
-    if(!this.isLogged()){
-      return false;
-    }
-    return (this.user.getRole() == "student");
+    return this.isLogged() && (this.user.getRole() == "student");
   }
 
   isOrganization(): boolean{
-    if(!this.isLogged()){
-      return false;
-    }
-    return (this.user.getRole() == "organization");
+    return this.isLogged() && (this.user.getRole() == "organization");
   }
 
 }

@@ -3,10 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http'
 import { Router } from '@angular/router';
 
-import { User } from '../../model/user';
+import { User } from '../../models/user';
 
 @Component({
-  selector: 'register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })

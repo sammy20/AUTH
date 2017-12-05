@@ -20,16 +20,16 @@
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="btn btn-outline-danger btnLink" routerLink="/" role="button">Logout</a>
+        <li *ngIf="isUser()" class="nav-item">
+          <a (click)="logout()" class="btn btn-outline-danger btnLink" routerLink="/" role="button">Logout</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="isUser()" class="nav-item">
           <a class="btn btn-outline-primary btnLink" routerLink="/" role="button">Setings</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="isGuest()" class="nav-item">
           <a class="btn btn-outline-success btnLink" routerLink="/login" role="button">Login</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="isGuest()" class="nav-item">
           <a class="btn btn-outline-primary btnLink" routerLink="/register" role="button">Register</a>
         </li>
       </ul>
