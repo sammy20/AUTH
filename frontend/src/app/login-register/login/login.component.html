@@ -1,0 +1,37 @@
+<div *ngIf="isUser()">
+  <div class="row m-top">
+    <div class="col-md"></div>
+    <div class="col-md-6">
+      <h2 class="text-center">You are logged in as "{{ getUsername() }}"</h2>
+      <button (click)="logout();" class="btn btn-danger btn-block">Logout</button>
+    </div>
+    <div class="col-md"></div>
+  </div>
+</div>
+<div *ngIf="!isUser()">
+  <div class="row m-top">
+    <div class="col-md"></div>
+    <div class="col-md-6">
+      <h2 class="text-center">Login</h2>
+      <form [formGroup]="loginForm" novalidate>
+        <div class="form-group">
+          <label for="idUsername">Usename</label>
+          <input formControlName="username" type="text" class="form-control" id="idUsername" placeholder="Username">
+          <validation-errors [abstractControl]="username"></validation-errors>
+        </div>
+        <div class="form-group">
+          <label for="idPassword">Password</label>
+          <input formControlName="password" type="password" class="form-control" id="idPassword" placeholder="Password">
+          <validation-errors [abstractControl]="password"></validation-errors>
+        </div>
+        <div *ngIf="errorMessage" class="alert alert-danger">
+          <span>{{ errorMessage }}</span>
+        </div>
+        <button [disabled]="loginForm.invalid" (click)="login();" class="btn btn-success btn-block">Login</button>
+        <button (click)="loginGuest();" class="btn btn-outline-success btn-block">Login as Guest</button>
+        <a routerLink="/register" class="btn btn-primary btn-block" role="button">Register</a>
+      </form>
+    </div>
+    <div class="col-md"></div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+Documentatie:
+	Generale:
+
+    FrontEnd:
+
+    BackEnd:
+        Spring Boot REST + JPA + Hibernate + MySQL Example
+        https://www.concretepage.com/spring-boot/spring-boot-rest-jpa-hibernate-mysql-example
+
+Tool-uri necesare:
+	java (se instaleaza cu installer) (sa fie bagata ok in path ca da eroare maven)
+	maven (se downladeaza de pe site, se pune undeva si se baga in path)
+	git (se instaleaza cu installer)
+	node.js (se instaleaza cu installer)
+	angular-cli (se deschide o consola si se ruleaza "npm install -g @angular/cli" daca node.js e in path o sa fie ok)
+	(optional) mysql workbench (se instaleaza cu installer)(pentru cine are nevoie sa lucreze cu baza de date)
+	
+Mod de lucru:
+	FrontEnd:
+		Dubluclick "xSTART_SERVER.bat" pentru a porni serverul cu api-ul
+		Se incepe lucrul pe http://localhost:4200/
+	BackEnd:
+		Se merge in "frontend" si se da dubluclick pe "xBUILD_FRONTEND.bat" pentru a build-ui frontend-ul
+		(daca e nevoie sa se testeze cu partea de angular in fata, se vede la http://localhost:8080)
+		Se incepe lucrul pe http://localhost:8080/api
+	Ambele cazuri:
+		Se merge in "frontend" si se da din consola "npm install" daca da eroare la build-uire sau serve
+		(in cazul in care cineva a inclus librari externe si celalalt nu are dependintele)
+		
+Conexiune baza de date:
+    Host: 89.42.220.193
+    Nume baza de date: r44923co_Erasmus
+    User: r44923co_Admin
+    Parola: 6%SXmF&M2pAm
