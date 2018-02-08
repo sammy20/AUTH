@@ -1,60 +1,47 @@
 package fmi.pserasmusip.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
+
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.Collection;
+import java.util.Set;
+import javax.persistence.*;
 
 @Entity
 @Table(name="users")
+@Getter
+@Setter
+@Builder
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
     
+
+    private int id;
+    private String username;
+    private String password;
+
+    private Collection<Role> roles;
+    private String email;
+
+    @JsonIgnore
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "roleId"))
+    public Collection<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
+    }
+
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    
-    @Column(name="id")
-    private int id;
-    @Column(name="username")
-    private String username;
-    @Column(name="password")
-    private String password;
-    @Column(name="role")
-    private String role;
-    @Column(name="email")
-    private String email;
-    
     public int getId() {
         return id;
     }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public String getUsername() {
-        return username;
-    }
-    public void setUsername(String username) {
-        this.username = username;
-    }
-    public String getPassword() {
-        return password;
-    }
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    public String getRole() {
-        return role;
-    }
-    public void setRole(String role) {
-        this.role = role;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
+
 }

@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
 
   login(): void{
     if(this.loginForm.valid){
-      this.httpClient.post<any>("http://localhost:8080/api/users/login", this.loginForm.value).
+      this.httpClient.post<any>("http://localhost:8080/login", this.loginForm.value).
       subscribe(
         data => {
           let user = new User();
